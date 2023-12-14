@@ -1,0 +1,84 @@
+[gd_scene load_steps=14 format=3 uid="uid://k1uo0lo6m0vj"]
+
+[ext_resource type="Script" path="res://jolt.gd" id="1_23au4"]
+[ext_resource type="Texture2D" uid="uid://cdepsxwjixm08" path="res://assets/SkyHDR.hdr" id="1_fvuge"]
+[ext_resource type="Texture2D" uid="uid://csvnop4qiydrp" path="res://assets/Dark/texture_13.png" id="2_fohoi"]
+[ext_resource type="Script" path="res://chacrterbasic.gd" id="4_4w7p3"]
+[ext_resource type="Texture2D" uid="uid://djg8y25y06h5n" path="res://assets/Green/texture_09.png" id="4_t6viu"]
+[ext_resource type="PackedScene" uid="uid://bncvhwmofsey" path="res://command_input.tscn" id="6_1tknb"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_we0dv"]
+panorama = ExtResource("1_fvuge")
+
+[sub_resource type="Sky" id="Sky_8eako"]
+sky_material = SubResource("PanoramaSkyMaterial_we0dv")
+
+[sub_resource type="Environment" id="Environment_yebup"]
+background_mode = 2
+sky = SubResource("Sky_8eako")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0lyky"]
+albedo_texture = ExtResource("2_fohoi")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ylmdr"]
+radius = 2.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ao57b"]
+albedo_texture = ExtResource("4_t6viu")
+uv1_scale = Vector3(2, 2, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bt4fr"]
+size = Vector3(300, 1, 300)
+
+[node name="JOLT" type="Node3D"]
+script = ExtResource("1_23au4")
+min = -2
+max = 2
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_yebup")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+use_collision = true
+size = Vector3(100, 1, 100)
+material = SubResource("StandardMaterial3D_0lyky")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.918509, 0.395401, 0, -0.395401, 0.918509, 0, 11.0435, 28.0163)
+
+[node name="Marker3D" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 79.2995, 0)
+
+[node name="BoxParent" type="Node3D" parent="."]
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+script = ExtResource("4_4w7p3")
+speed = 20
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
+shape = SubResource("SphereShape3D_ylmdr")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="CharacterBody3D"]
+radius = 2.0
+material = SubResource("StandardMaterial3D_ao57b")
+
+[node name="CommandInput" parent="." instance=ExtResource("6_1tknb")]
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -30.9909, 0)
+shape = SubResource("BoxShape3D_bt4fr")
+
+[connection signal="new_box_spawn" from="." to="CommandInput" method="_on_jolt_new_box_spawn"]
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

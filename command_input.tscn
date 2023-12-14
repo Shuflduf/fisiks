@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://bncvhwmofsey"]
+
+[ext_resource type="Script" path="res://FPSMeter.gd" id="1_2hdfm"]
+[ext_resource type="Script" path="res://command_input.gd" id="1_rsubp"]
+
+[node name="CommandInput" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rsubp")
+
+[node name="CommandCanvas" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="CommandCanvas"]
+offset_right = 122.0
+offset_bottom = 46.0
+
+[node name="FPSMeter" type="Label" parent="CommandCanvas"]
+offset_right = 40.0
+offset_bottom = 23.0
+script = ExtResource("1_2hdfm")
+
+[node name="ObjectCount" type="Label" parent="CommandCanvas"]
+anchors_preset = -1
+anchor_top = 0.035
+anchor_bottom = 0.035
+offset_top = 0.32
+offset_right = 67.0
+offset_bottom = 23.32
