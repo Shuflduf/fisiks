@@ -36,12 +36,10 @@ size = Vector3(300, 1, 300)
 
 [node name="JOLT" type="Node3D"]
 script = ExtResource("1_23au4")
-min = -2
-max = 2
+spread = 3
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
-shadow_enabled = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_yebup")
@@ -56,7 +54,7 @@ material = SubResource("StandardMaterial3D_0lyky")
 transform = Transform3D(1, 0, 0, 0, 0.918509, 0.395401, 0, -0.395401, 0.918509, 0, 11.0435, 28.0163)
 
 [node name="Marker3D" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 79.2995, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 43.2995, 0)
 
 [node name="BoxParent" type="Node3D" parent="."]
 

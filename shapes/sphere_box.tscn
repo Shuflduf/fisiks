@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://bktov68oerkjc"]
+
+[ext_resource type="PackedScene" uid="uid://bemkt3wxniu5s" path="res://rigid_body_3d.tscn" id="1_wlqmk"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_orq42"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_aylsa"]
+
+[node name="SphereBox" instance=ExtResource("1_wlqmk")]
+
+[node name="MeshInstance3D" parent="." index="0"]
+mesh = SubResource("SphereMesh_orq42")
+
+[node name="CollisionShape3D" parent="." index="1"]
+shape = SubResource("BoxShape3D_aylsa")
