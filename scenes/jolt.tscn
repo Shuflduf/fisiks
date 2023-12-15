@@ -18,6 +18,9 @@ sky_material = SubResource("PanoramaSkyMaterial_we0dv")
 background_mode = 2
 sky = SubResource("Sky_8eako")
 tonemap_mode = 2
+ssr_enabled = true
+ssao_enabled = true
+ssil_enabled = true
 glow_enabled = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0lyky"]
@@ -46,9 +49,9 @@ transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -
 environment = SubResource("Environment_yebup")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0)
 use_collision = true
-size = Vector3(100, 1, 100)
+size = Vector3(100, 3, 100)
 material = SubResource("StandardMaterial3D_0lyky")
 
 [node name="Marker3D" type="Marker3D" parent="."]

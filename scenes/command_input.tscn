@@ -15,8 +15,11 @@ script = ExtResource("1_d2uxj")
 [node name="CommandCanvas" type="CanvasLayer" parent="."]
 
 [node name="Panel" type="Panel" parent="CommandCanvas"]
-offset_right = 122.0
-offset_bottom = 46.0
+anchors_preset = -1
+anchor_right = 0.106
+anchor_bottom = 0.071
+offset_right = -0.112007
+offset_bottom = -0.00800323
 
 [node name="FPSMeter" type="Label" parent="CommandCanvas"]
 offset_right = 40.0
@@ -63,12 +66,12 @@ text = "SquareColl
 unique_name_in_owner = true
 anchors_preset = -1
 anchor_left = 0.795
-anchor_top = 0.915
+anchor_top = 0.903
 anchor_right = 0.898
 anchor_bottom = 1.0
 offset_left = 0.159973
-offset_top = -7.92004
-offset_right = -0.496094
+offset_top = -0.144043
+offset_right = -0.496216
 grow_horizontal = 0
 grow_vertical = 0
 text = "SphereMesh
@@ -130,6 +133,7 @@ offset_bottom = 0.32
 grow_horizontal = 0
 min_value = 1.0
 max_value = 5.0
+step = 0.5
 value = 1.0
 
 [connection signal="value_changed" from="CommandCanvas/ScaleSlider" to="." method="_on_scale_slider_value_changed"]
