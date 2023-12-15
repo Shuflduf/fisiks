@@ -55,6 +55,7 @@ material = SubResource("StandardMaterial3D_0lyky")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 43.2995, 0)
 
 [node name="pivot" parent="." instance=ExtResource("4_nldk7")]
+sensitivity = 0.6
 
 [node name="BoxParent" type="Node3D" parent="."]
 
