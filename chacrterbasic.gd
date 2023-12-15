@@ -12,4 +12,3 @@ func _physics_process(delta):
 	position.y = clamp(position.y, -3, 30)
 	position.x = clamp(position.x, -40, 40)
 	position.z = clamp(position.z, -40, 40)
-

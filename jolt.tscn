@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://k1uo0lo6m0vj"]
+[gd_scene load_steps=15 format=3 uid="uid://k1uo0lo6m0vj"]
 
 [ext_resource type="Script" path="res://jolt.gd" id="1_23au4"]
 [ext_resource type="Texture2D" uid="uid://cdepsxwjixm08" path="res://assets/SkyHDR.hdr" id="1_fvuge"]
 [ext_resource type="Texture2D" uid="uid://csvnop4qiydrp" path="res://assets/Dark/texture_13.png" id="2_fohoi"]
 [ext_resource type="Script" path="res://chacrterbasic.gd" id="4_4w7p3"]
+[ext_resource type="PackedScene" uid="uid://dg7q3twyl3mq0" path="res://pivot.tscn" id="4_landa"]
 [ext_resource type="Texture2D" uid="uid://djg8y25y06h5n" path="res://assets/Green/texture_09.png" id="4_t6viu"]
 [ext_resource type="PackedScene" uid="uid://bncvhwmofsey" path="res://command_input.tscn" id="6_1tknb"]
 
@@ -50,11 +51,10 @@ use_collision = true
 size = Vector3(100, 1, 100)
 material = SubResource("StandardMaterial3D_0lyky")
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.918509, 0.395401, 0, -0.395401, 0.918509, 0, 11.0435, 28.0163)
-
 [node name="Marker3D" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 43.2995, 0)
+
+[node name="pivot" parent="." instance=ExtResource("4_landa")]
 
 [node name="BoxParent" type="Node3D" parent="."]
 
@@ -78,5 +78,9 @@ material = SubResource("StandardMaterial3D_ao57b")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -30.9909, 0)
 shape = SubResource("BoxShape3D_bt4fr")
 
+[connection signal="delete_box" from="." to="CommandInput" method="_on_jolt_delete_box"]
 [connection signal="new_box_spawn" from="." to="CommandInput" method="_on_jolt_new_box_spawn"]
+[connection signal="change_scale" from="CommandInput" to="." method="_on_command_input_change_scale"]
+[connection signal="reset_camera_button" from="CommandInput" to="." method="_on_command_input_reset_camera_button"]
+[connection signal="reset_camera_button" from="CommandInput" to="pivot" method="_on_command_input_reset_camera_button"]
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
