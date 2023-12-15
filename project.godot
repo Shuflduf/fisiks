@@ -11,9 +11,17 @@ config_version=5
 [application]
 
 config/name="Fisicks"
-run/main_scene="res://jolt.tscn"
+run/main_scene="res://scenes/jolt.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
+
+[file_customization]
+
+folder_colors={
+"res://assets/": "purple",
+"res://scenes/": "red",
+"res://scripts/": "yellow"
+}
 
 [input]
 

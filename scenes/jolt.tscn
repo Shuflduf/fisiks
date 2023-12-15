@@ -1,15 +1,15 @@
 [gd_scene load_steps=15 format=3 uid="uid://k1uo0lo6m0vj"]
 
-[ext_resource type="Script" path="res://jolt.gd" id="1_23au4"]
-[ext_resource type="Texture2D" uid="uid://cdepsxwjixm08" path="res://assets/SkyHDR.hdr" id="1_fvuge"]
-[ext_resource type="Texture2D" uid="uid://csvnop4qiydrp" path="res://assets/Dark/texture_13.png" id="2_fohoi"]
-[ext_resource type="Script" path="res://chacrterbasic.gd" id="4_4w7p3"]
-[ext_resource type="PackedScene" uid="uid://dg7q3twyl3mq0" path="res://pivot.tscn" id="4_landa"]
-[ext_resource type="Texture2D" uid="uid://djg8y25y06h5n" path="res://assets/Green/texture_09.png" id="4_t6viu"]
-[ext_resource type="PackedScene" uid="uid://bncvhwmofsey" path="res://command_input.tscn" id="6_1tknb"]
+[ext_resource type="Script" path="res://scripts/jolt.gd" id="1_b37mg"]
+[ext_resource type="Texture2D" uid="uid://cdepsxwjixm08" path="res://assets/SkyHDR.hdr" id="2_xs5rw"]
+[ext_resource type="Texture2D" uid="uid://csvnop4qiydrp" path="res://assets/Dark/texture_13.png" id="3_28deq"]
+[ext_resource type="PackedScene" uid="uid://dg7q3twyl3mq0" path="res://scenes/pivot.tscn" id="4_nldk7"]
+[ext_resource type="Script" path="res://scripts/chacrterbasic.gd" id="5_mjx2h"]
+[ext_resource type="Texture2D" uid="uid://djg8y25y06h5n" path="res://assets/Green/texture_09.png" id="6_5k3ef"]
+[ext_resource type="PackedScene" uid="uid://bncvhwmofsey" path="res://scenes/command_input.tscn" id="7_tpnm5"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_we0dv"]
-panorama = ExtResource("1_fvuge")
+panorama = ExtResource("2_xs5rw")
 
 [sub_resource type="Sky" id="Sky_8eako"]
 sky_material = SubResource("PanoramaSkyMaterial_we0dv")
@@ -21,7 +21,7 @@ tonemap_mode = 2
 glow_enabled = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0lyky"]
-albedo_texture = ExtResource("2_fohoi")
+albedo_texture = ExtResource("3_28deq")
 uv1_triplanar = true
 uv1_world_triplanar = true
 
@@ -29,14 +29,14 @@ uv1_world_triplanar = true
 radius = 2.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ao57b"]
-albedo_texture = ExtResource("4_t6viu")
+albedo_texture = ExtResource("6_5k3ef")
 uv1_scale = Vector3(2, 2, 2)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bt4fr"]
 size = Vector3(300, 1, 300)
 
 [node name="JOLT" type="Node3D"]
-script = ExtResource("1_23au4")
+script = ExtResource("1_b37mg")
 spread = 3
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -54,13 +54,13 @@ material = SubResource("StandardMaterial3D_0lyky")
 [node name="Marker3D" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 43.2995, 0)
 
-[node name="pivot" parent="." instance=ExtResource("4_landa")]
+[node name="pivot" parent="." instance=ExtResource("4_nldk7")]
 
 [node name="BoxParent" type="Node3D" parent="."]
 
 [node name="CharacterBody3D" type="CharacterBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
-script = ExtResource("4_4w7p3")
+script = ExtResource("5_mjx2h")
 speed = 20
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
@@ -70,7 +70,7 @@ shape = SubResource("SphereShape3D_ylmdr")
 radius = 2.0
 material = SubResource("StandardMaterial3D_ao57b")
 
-[node name="CommandInput" parent="." instance=ExtResource("6_1tknb")]
+[node name="CommandInput" parent="." instance=ExtResource("7_tpnm5")]
 
 [node name="Area3D" type="Area3D" parent="."]
 

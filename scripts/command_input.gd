@@ -1,6 +1,6 @@
 extends Control
 
-var box = preload("res://rigid_body_3d.tscn")
+var box = preload("res://scenes/rigid_body_3d.tscn")
 
 @onready var object_count_label = $CommandCanvas/ObjectCount
 

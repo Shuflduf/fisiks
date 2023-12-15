@@ -1,6 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://co5xligffurbi"]
 
-[ext_resource type="PackedScene" uid="uid://bemkt3wxniu5s" path="res://rigid_body_3d.tscn" id="1_iqx3t"]
+[ext_resource type="PackedScene" uid="uid://bemkt3wxniu5s" path="res://scenes/rigid_body_3d.tscn" id="1_iqx3t"]
+
 
 [sub_resource type="BoxMesh" id="BoxMesh_8b2l7"]
 
