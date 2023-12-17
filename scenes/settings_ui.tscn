@@ -1,0 +1,176 @@
+[gd_scene load_steps=2 format=3 uid="uid://bb7feq6ywnp7n"]
+
+[ext_resource type="Script" path="res://scripts/settings_ui.gd" id="1_wr6td"]
+
+[node name="SettingsUi" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wr6td")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="TabContainer" type="TabContainer" parent="MarginContainer"]
+layout_mode = 2
+current_tab = 3
+
+[node name="Material" type="MarginContainer" parent="MarginContainer/TabContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/TabContainer/Material"]
+layout_mode = 2
+
+[node name="Metallic" type="HSplitContainer" parent="MarginContainer/TabContainer/Material/VBoxContainer"]
+layout_mode = 2
+split_offset = 200
+dragger_visibility = 1
+
+[node name="CheckBox" type="CheckBox" parent="MarginContainer/TabContainer/Material/VBoxContainer/Metallic"]
+layout_mode = 2
+text = "Metallic
+"
+
+[node name="HSlider" type="HSlider" parent="MarginContainer/TabContainer/Material/VBoxContainer/Metallic"]
+layout_mode = 2
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.01
+
+[node name="Roughness" type="HSplitContainer" parent="MarginContainer/TabContainer/Material/VBoxContainer"]
+layout_mode = 2
+split_offset = 200
+dragger_visibility = 1
+
+[node name="CheckBox" type="CheckBox" parent="MarginContainer/TabContainer/Material/VBoxContainer/Roughness"]
+layout_mode = 2
+text = "Roughness
+"
+
+[node name="HSlider" type="HSlider" parent="MarginContainer/TabContainer/Material/VBoxContainer/Roughness"]
+layout_mode = 2
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.01
+value = 1.0
+
+[node name="Emission" type="MarginContainer" parent="MarginContainer/TabContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/TabContainer/Emission"]
+layout_mode = 2
+
+[node name="Enabled" type="HSplitContainer" parent="MarginContainer/TabContainer/Emission/VBoxContainer"]
+layout_mode = 2
+split_offset = 200
+dragger_visibility = 1
+
+[node name="CheckBox" type="CheckBox" parent="MarginContainer/TabContainer/Emission/VBoxContainer/Enabled"]
+layout_mode = 2
+text = "Enabled"
+
+[node name="HSlider" type="HSlider" parent="MarginContainer/TabContainer/Emission/VBoxContainer/Enabled"]
+layout_mode = 2
+size_flags_vertical = 4
+min_value = 1.0
+value = 1.0
+
+[node name="Color" type="MarginContainer" parent="MarginContainer/TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/TabContainer/Color"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/TabContainer/Color/ScrollContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="ColorPicker" type="ColorPicker" parent="MarginContainer/TabContainer/Color/ScrollContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+color = Color(0.690196, 0.690196, 0.690196, 1)
+
+[node name="Illumination" type="MarginContainer" parent="MarginContainer/TabContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/TabContainer/Illumination"]
+layout_mode = 2
+
+[node name="Sky" type="HBoxContainer" parent="MarginContainer/TabContainer/Illumination/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="day" type="Label" parent="MarginContainer/TabContainer/Illumination/VBoxContainer/Sky"]
+layout_mode = 2
+text = "Day"
+
+[node name="switch" type="CheckButton" parent="MarginContainer/TabContainer/Illumination/VBoxContainer/Sky"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="night" type="Label" parent="MarginContainer/TabContainer/Illumination/VBoxContainer/Sky"]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "Night"
+
+[node name="funnies" type="MarginContainer" parent="MarginContainer/TabContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 30
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/TabContainer/funnies"]
+layout_mode = 2
+
+[node name="Billboard" type="HSplitContainer" parent="MarginContainer/TabContainer/funnies/VBoxContainer"]
+layout_mode = 2
+split_offset = 200
+dragger_visibility = 1
+
+[node name="CheckBox" type="CheckBox" parent="MarginContainer/TabContainer/funnies/VBoxContainer/Billboard"]
+layout_mode = 2
+text = "Billboard
+"
+
+[node name="Orthagraphic" type="HSplitContainer" parent="MarginContainer/TabContainer/funnies/VBoxContainer"]
+layout_mode = 2
+split_offset = 200
+dragger_visibility = 1
+
+[node name="CheckBox" type="CheckBox" parent="MarginContainer/TabContainer/funnies/VBoxContainer/Orthagraphic"]
+layout_mode = 2
+text = "Orthagraphic (all shapes are the same size)
+"

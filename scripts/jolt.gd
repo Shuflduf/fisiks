@@ -7,10 +7,15 @@ const BOX_SPHERE = preload("res://shapes/box_sphere.tscn")
 const SPHERE_BOX = preload("res://shapes/sphere_box.tscn")
 const SPHERE_SPHERE = preload("res://shapes/sphere_sphere.tscn")
 
+const DAYSKY = preload("res://assets/daysky.tres")
+const NIGHTSKY = preload("res://assets/nightsky.tres")
+
 @onready var box_parent = $BoxParent
 @onready var marker = $Marker3D
 @onready var command_input = $CommandInput
 @onready var player = $CharacterBody3D
+@onready var settings = $SettingsUI
+@onready var world_environment = $WorldEnvironment as WorldEnvironment
 
 @export var spread := 2
 @export var sensitivity := 0.01
@@ -26,7 +31,14 @@ signal delete_box
 var moving_camera := false
 var shape_scale := 1
 
+var timeIsDay := true
+
 func _physics_process(_delta):
+	if Input.is_action_just_pressed("settings") and settings.visible:
+		settings.visible = false
+	elif Input.is_action_just_pressed("settings") and not settings.visible:
+		settings.visible = true
+	
 	if Input.is_action_pressed("middle_mouse"):
 		moving_camera = true
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -44,7 +56,7 @@ func _physics_process(_delta):
 	new_box.rotation.x = randf_range(180, -180)
 	new_box.rotation.y = randf_range(180, -180)
 	new_box.scale = Vector3(shape_scale, shape_scale, shape_scale)
-	
+
 	box_parent.add_child(new_box)
 	emit_signal("new_box_spawn")
 
@@ -86,9 +98,18 @@ func _ready():
 		for child in box_parent.get_children():
 			child.queue_free()
 	)
+	settings.visible = false
 
 func _on_command_input_reset_camera_button():
 	player.global_position = Vector3(0, 2, 0)
 
 func _on_command_input_change_scale(value):
 	shape_scale = value
+
+func _on_settings_ui_change_time():
+	if timeIsDay:
+		get_viewport().world_3d.environment.sky.sky_material = NIGHTSKY
+		timeIsDay = false
+	else:
+		get_viewport().world_3d.environment.sky.sky_material = DAYSKY
+		timeIsDay = true

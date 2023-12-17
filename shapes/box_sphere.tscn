@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bemkt3wxniu5s" path="res://scenes/rigid_body_3d.tscn" id="1_iqx3t"]
 [ext_resource type="Material" uid="uid://c3o2w6bob5ned" path="res://shape_texture.tres" id="2_jbkvf"]
 
+
 [sub_resource type="BoxMesh" id="BoxMesh_8b2l7"]
 material = ExtResource("2_jbkvf")
 
