@@ -2,7 +2,6 @@ extends Control
 
 var box = preload("res://scenes/rigid_body_3d.tscn")
 
-@onready var object_count_label = $CommandCanvas/ObjectCount
 
 @onready var square_mesh = %SquareMesh
 @onready var square_coll = %SquareColl
@@ -11,6 +10,7 @@ var box = preload("res://scenes/rigid_body_3d.tscn")
 @onready var reset = %Reset
 @onready var reset_camera = %ResetCamera
 @onready var scale_slider = $CommandCanvas/ScaleSlider
+@onready var objects = $CommandCanvas/PanelContainer/Objects
 
 @export var sensitivity := 4.0
 
@@ -24,11 +24,6 @@ signal reset_camera_button
 signal change_scale(value)
 
 var object_count := 0
-
-
-func _on_jolt_new_box_spawn():
-	object_count += 1
-	object_count_label.text = "Objects: " + str(object_count)
 	
 func _ready():
 #region signals
@@ -55,9 +50,12 @@ func _ready():
 		emit_signal("reset_camera_button")	
 	)
 
-func _on_jolt_delete_box():
-	object_count -= 1
-
 func _on_scale_slider_value_changed(value):
 	emit_signal("change_scale",value)
 
+func _physics_process(_delta):
+	object_count += 1
+	objects.text = str(object_count) + " Objects"
+
+func _on_jolt_delete_box():
+	object_count -= 1

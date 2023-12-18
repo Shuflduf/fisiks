@@ -58,7 +58,7 @@ func _physics_process(_delta):
 	new_box.scale = Vector3(shape_scale, shape_scale, shape_scale)
 
 	box_parent.add_child(new_box)
-	emit_signal("new_box_spawn")
+
 
 func _on_area_3d_body_entered(body):
 	body.queue_free()

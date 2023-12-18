@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://k1uo0lo6m0vj"]
+[gd_scene load_steps=16 format=3 uid="uid://k1uo0lo6m0vj"]
 
 [ext_resource type="Script" path="res://scripts/jolt.gd" id="1_b37mg"]
 [ext_resource type="Material" uid="uid://ii2u7m60q265" path="res://assets/daysky.tres" id="2_ktnmv"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://djg8y25y06h5n" path="res://assets/Green/texture_09.png" id="6_5k3ef"]
 [ext_resource type="PackedScene" uid="uid://bncvhwmofsey" path="res://scenes/command_input.tscn" id="7_tpnm5"]
 [ext_resource type="PackedScene" uid="uid://bb7feq6ywnp7n" path="res://scenes/settings_ui.tscn" id="8_1xtd7"]
+[ext_resource type="PackedScene" uid="uid://cggqb75a8w8r" path="res://addons/debug_menu/debug_menu.tscn" id="9_koe3c"]
 
 [sub_resource type="Sky" id="Sky_8eako"]
 sky_material = ExtResource("2_ktnmv")
@@ -53,7 +54,7 @@ size = Vector3(100, 3, 100)
 material = SubResource("StandardMaterial3D_0lyky")
 
 [node name="Marker3D" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 117.02, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 41.187, 0)
 
 [node name="pivot" parent="." instance=ExtResource("4_nldk7")]
 sensitivity = 0.6
@@ -83,9 +84,12 @@ shape = SubResource("BoxShape3D_bt4fr")
 [node name="SettingsUI" parent="." instance=ExtResource("8_1xtd7")]
 visible = false
 
+[node name="CanvasLayer" parent="." instance=ExtResource("9_koe3c")]
+
+[connection signal="delete_box" from="." to="." method="_on_delete_box"]
 [connection signal="delete_box" from="." to="CommandInput" method="_on_jolt_delete_box"]
-[connection signal="new_box_spawn" from="." to="CommandInput" method="_on_jolt_new_box_spawn"]
 [connection signal="change_scale" from="CommandInput" to="." method="_on_command_input_change_scale"]
+[connection signal="reset_button" from="CommandInput" to="CanvasLayer" method="_on_command_input_reset_button"]
 [connection signal="reset_camera_button" from="CommandInput" to="." method="_on_command_input_reset_camera_button"]
 [connection signal="reset_camera_button" from="CommandInput" to="pivot" method="_on_command_input_reset_camera_button"]
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

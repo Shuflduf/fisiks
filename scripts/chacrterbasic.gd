@@ -4,7 +4,7 @@ extends CharacterBody3D
 
 func _physics_process(delta):
 	var movement_dir = Input.get_vector("left","right","down","up")
-	var z_dir = Input.get_axis("left_mouse","right_mouse")
+	var z_dir = Input.get_axis("go_up","go_down")
 	position.x += movement_dir.x * delta * speed
 	position.y -= z_dir * delta * speed
 	position.z -= movement_dir.y * delta * speed

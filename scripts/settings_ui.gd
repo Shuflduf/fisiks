@@ -9,7 +9,7 @@ signal change_time
 @onready var metallic_slider = $MarginContainer/TabContainer/Material/VBoxContainer/Metallic/HSlider
 @onready var roughness_box = $MarginContainer/TabContainer/Material/VBoxContainer/Roughness/CheckBox
 @onready var roughness_slider = $MarginContainer/TabContainer/Material/VBoxContainer/Roughness/HSlider
-
+@onready var reset_button = $MarginContainer/TabContainer/Material/VBoxContainer/ResetButton
 
 @onready var emission_box = $MarginContainer/TabContainer/Emission/VBoxContainer/Enabled/CheckBox
 @onready var emission_slider = $MarginContainer/TabContainer/Emission/VBoxContainer/Enabled/HSlider
@@ -71,3 +71,13 @@ func _ready():
 	switch.pressed.connect(func():
 		emit_signal("change_time")	
 	)
+	reset_button.pressed.connect(func():
+		metallic_slider.value = 0
+		roughness_slider.value = 1
+		emission_box.button_pressed = false
+		emission_slider.value = 1
+		color_picker.color = Color.GRAY
+		billboard_box.button_pressed = false
+		orthagraphic_box.button_pressed = false
+	)
+
